@@ -1,0 +1,10 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
+mssql_data/
+mysql_data/
+postgres_data/
+
+.vscode/
+*.log

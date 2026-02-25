@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_with_storage
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Ha07081991-
+    volumes:
+      - mssql_data:/var/opt/mssql 
+
+volumes:
+  mssql_data: 
+  
