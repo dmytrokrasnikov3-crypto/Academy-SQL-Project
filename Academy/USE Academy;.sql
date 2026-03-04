@@ -72,9 +72,10 @@ SELECT [Name], [Financing], [Id] FROM [Departments];
 SELECT [Name] AS 'Group Name', [Rating] AS 'Group Rating' FROM [Groups];
 
 SELECT [Surname], 
-       ([Salary] / [Premium]) * 100 AS 'Salary to Premium %', 
-       ([Salary] / ([Salary] + [Premium])) * 100 AS 'Salary to Total %' 
-FROM [Teachers];
+       (CAST([Salary] AS DECIMAL(10,2)) / CAST([Premium] AS DECIMAL(10,2))) * 100 AS 'Salary to Premium %', 
+       (CAST([Salary] AS DECIMAL(10,2)) / (CAST([Salary] AS DECIMAL(10,2)) + CAST([Premium] AS DECIMAL(10,2)))) * 100 AS 'Salary to Total %' 
+FROM [Teachers]
+WHERE [Premium] > 0;
 
 SELECT 'The dean of faculty ' + [Name] + ' is ' + [Dean] + '.' AS 'Faculty Info' 
 FROM [Faculties];
