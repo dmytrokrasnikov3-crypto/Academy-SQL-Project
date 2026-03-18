@@ -68,6 +68,20 @@ CREATE TABLE GroupsLectures (
     CONSTRAINT FK_GroupsLectures_Lectures FOREIGN KEY (LectureId) REFERENCES Lectures(Id)
 );
 
+USE Academy_New;
+GO
 
+ALTER TABLE Lectures 
+ADD DayOfWeek INT NOT NULL DEFAULT 1;
+
+ALTER TABLE Lectures 
+ADD CONSTRAINT CHK_Lectures_DayOfWeek CHECK (DayOfWeek BETWEEN 1 AND 7);
+
+-- 3. Додаємо інші обмеження, якщо їх не було при створенні
+ALTER TABLE Teachers 
+ADD CONSTRAINT CHK_Teachers_Salary_New CHECK (Salary > 0);
+
+ALTER TABLE Groups 
+ADD CONSTRAINT CHK_Groups_Year_New CHECK (Year BETWEEN 1 AND 5);
 
 
